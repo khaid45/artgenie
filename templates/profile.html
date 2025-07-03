@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile | ArtGenie</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .stat-card {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      color: #fff;
+    }
+    .stat-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.8rem;
+    }
+    .chart-container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 20px;
+      border-radius: 14px;
+      backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <header>
+    <div class="logo">
+      <img src="/static/images/artgenie_logo.png" class="logo-img" alt="logo" />
+      <span>ArtGenie</span>
+    </div>
+    <div class="user-info">
+      <span>👋 Hello, {{ username }}</span>
+      <a href="/" class="btn">🎨 Back to Generator</a>
+      <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+  </header>
+
+  <main class="hero">
+    <h1>🧑‍🎨 Profile Dashboard</h1>
+
+    <div class="card-grid">
+      <div class="stat-card">
+        <h2>{{ total_images }}</h2>
+        <p>🖼️ Images Generated</p>
+      </div>
+      <div class="stat-card">
+        <h2>{{ total_favorites }}</h2>
+        <p>⭐ Favorites</p>
+      </div>
+      <div class="stat-card">
+        <h2>{{ most_used_style }}</h2>
+        <p>🎨 Most Used Style</p>
+      </div>
+      <div class="stat-card">
+        <h2>{{ last_time }}</h2>
+        <p>🕒 Last Generated</p>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <h2 style="text-align: center;">🧩 Style Usage</h2>
+      <canvas id="styleChart"></canvas>
+    </div>
+  </main>
+
+  <script>
+    fetch('/style-distribution')
+      .then(res => res.json())
+      .then(data => {
+        const ctx = document.getElementById('styleChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: Object.keys(data),
+            datasets: [{
+              label: 'Style Usage',
+              data: Object.values(data),
+              backgroundColor: [
+                '#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0', '#9966ff', '#ff9f40'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'bottom',
+                labels: { color: '#fff' }
+              }
+            }
+          }
+        });
+      });
+  </script>
+</body>
+</html>

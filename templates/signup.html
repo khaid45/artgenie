@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up | ArtGenie</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <main class="auth-page">
+    <div class="auth-box">
+      <h2>Create Your ArtGenie Account</h2>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="flash-messages">
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST" action="/signup" class="auth-form">
+  <div class="form-group">
+    <input type="text" name="username" placeholder="Username" required />
+  </div>
+  <div class="form-group">
+    <input type="email" name="email" placeholder="Email address" required />
+  </div>
+  <div class="form-group">
+    <input type="password" name="password" placeholder="Password" required />
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn">Sign Up</button>
+  </div>
+</form>
+
+
+      <p>Already have an account? <a href="/login">Login here</a></p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArtGenie | AI Image Generator</title>
+  <link rel="icon" type="image/png" href="/static/images/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <!-- 🧠 Header -->
+  <header>
+    <div class="logo">
+      <img src="/static/images/artgenie_logo.png" alt="ArtGenie" class="logo-img" />
+      <span>ArtGenie</span>
+    </div>
+
+    {% if current_user.is_authenticated %}
+    <div class="user-info">
+      <span>👋 Welcome, {{ current_user.username }}</span>
+      <a href="/profile" class="btn">My Profile</a>
+      <a href="/logout" class="logout-btn">Logout</a>
+      <!-- 🌙 Dark Mode Toggle -->
+      <button id="dark-toggle" title="Toggle Dark Mode">🌙</button>
+    </div>
+    {% endif %}
+  </header>
+
+  <!-- ✨ Main Content -->
+  <main>
+    <div class="hero">
+      <h1>Turn Your Imagination Into Art</h1>
+      <p class="subtitle">Describe your vision, choose a style, and watch AI bring it to life</p>
+
+      <!-- ✨ Prompt Suggestions -->
+      <div class="prompt-suggestions">
+        <span>Try:</span>
+        <button class="suggestion-btn">A fox in neon forest</button>
+        <button class="suggestion-btn">Ancient ruins floating in sky</button>
+        <button class="suggestion-btn">Cyberpunk cat on hoverboard</button>
+      </div>
+
+      <div class="generator-box">
+        <textarea id="prompt-input" placeholder="Describe your image (e.g., A robot painting on Mars)"></textarea>
+        <div class="controls">
+          <select id="style-select">
+            <option value="realistic">Realistic</option>
+            <option value="anime">Anime</option>
+            <option value="cartoon">Cartoon</option>
+            <option value="painting">Digital Painting</option>
+            <option value="fantasy">Fantasy Art</option>
+            <option value="cyberpunk">Cyberpunk</option>
+          </select>
+          <button id="generate-btn" class="generate-btn">Generate</button>
+        </div>
+      </div>
+
+      <div id="image-result" class="image-output" style="display:none;">
+        <img id="generated-image" src="" alt="Generated image">
+        <div class="image-actions">
+          <a id="download-btn" href="#" download class="btn download">⬇ Download</a>
+          <button id="new-variation-btn" class="btn variation">🔄 New Variation</button>
+          <button id="favorite-btn" class="btn favorite">⭐ Favorite</button>
+        </div>
+      </div>
+
+      <div class="history-section">
+        <h2>📸 Your Image History</h2>
+        <div id="history-gallery" class="gallery"></div>
+        <div style="text-align: center; margin-top: 20px;">
+          <a href="/export-history" class="btn">📥 Download History (CSV)</a>
+          <a href="/download-zip" class="btn">🗂️ Download All Images (ZIP)</a>
+        </div>
+      </div>
+
+      <div class="favorites-section">
+        <h2>⭐ Favorite Images</h2>
+        <div id="favorites-gallery" class="gallery"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ⏳ Loading Overlay -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-text">⏳ Generating your image...</div>
+  </div>
+
+  <!-- ✅ Status Alert -->
+  <div id="status-alert" class="alert-message" style="display:none;"></div>
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>

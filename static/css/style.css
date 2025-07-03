@@ -1,0 +1,366 @@
+/* 🌌 Global Background */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: url('/static/images/ai-bg.jpg') no-repeat center center/cover;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 30, 0.75);
+  z-index: -1;
+}
+
+/* 🧠 Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 60px;
+  background: transparent;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  height: 36px;
+  vertical-align: middle;
+}
+
+.logo span {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: white;
+}
+
+/* 📁 Navigation */
+nav a {
+  color: #fefbfb;
+  margin-left: 30px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+nav a.active,
+nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+/* ✨ Hero Section */
+.hero {
+  text-align: center;
+  margin-top: 60px;
+  padding: 0 30px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #fbf9f9;
+  margin-bottom: 30px;
+}
+
+/* 📝 Prompt Box */
+.generator-box {
+  background: rgba(20, 20, 20, 0.8);
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(246, 242, 242, 0.1);
+  backdrop-filter: blur(14px);
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  border: none;
+  padding: 15px;
+  font-size: 1rem;
+  resize: none;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  outline: none;
+}
+
+/* 🎛️ Controls */
+.controls {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+select {
+  padding: 10px 16px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  color: #111;
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+}
+
+.generate-btn {
+  background: linear-gradient(45deg, #FF6B6B, #9C27B0);
+  border: none;
+  color: white;
+  padding: 10px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.generate-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+}
+
+/* 💡 Suggestions */
+.prompt-suggestions {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.prompt-suggestions span {
+  font-weight: 500;
+  color: #ddd;
+}
+
+.suggestion-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid #fff3;
+  padding: 6px 14px;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.suggestion-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 🖼️ Image Output */
+.image-output {
+  margin-top: 40px;
+}
+
+.image-output img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.image-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  color: #f3efef;
+  background: linear-gradient(90deg, #0505f8 0%, #00f2fe 100%);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* 🖼️ Gallery History */
+.history-section {
+  margin-top: 60px;
+}
+
+.gallery {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.gallery img {
+  width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.history-item {
+  position: relative;
+}
+
+.history-item .delete-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ⏳ Loading */
+.loading-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.loading-overlay.active {
+  display: flex;
+}
+
+/* 🌙 Dark Mode Toggle Button */
+#dark-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ffffff33;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 10000;
+  backdrop-filter: blur(8px);
+  transition: background 0.3s;
+}
+
+#dark-toggle:hover {
+  background: #ffffff55;
+}
+
+/* 🌑 Dark Mode Overrides */
+body.dark-mode {
+  background: url('/static/images/ai-bg.jpg') no-repeat center center/cover;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #f5f5f5;
+}
+
+body.dark-mode .overlay {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+body.dark-mode .generator-box,
+body.dark-mode textarea {
+  background: rgba(255, 255, 255, 0.05);
+  color: #eee;
+}
+
+body.dark-mode select,
+body.dark-mode .suggestion-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #eee;
+}
+
+body.dark-mode nav a:hover,
+body.dark-mode nav a.active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .btn {
+  background: linear-gradient(90deg, #4e54c8, #8f94fb);
+}
+
+body.dark-mode .delete-btn {
+  background: #e74c3c;
+}
+/* ⭐ Favorite Button */
+.favorite-btn {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background: gold;
+  color: black;
+  border: none;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+/* 📦 Favorites Section */
+.favorites-section {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.favorites-section h2 {
+  margin-bottom: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.logout-btn {
+  background: transparent;
+  color: #f66;
+  border: 1px solid #f66;
+  padding: 6px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #f66;
+  color: #fff;
+}
