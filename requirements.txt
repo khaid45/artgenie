@@ -53,7 +53,7 @@ idna==3.10
 importlib_metadata==8.7.0
 itsdangerous==2.2.0
 jax==0.4.30
-jaxlib>=0.4.34
+jaxlib==0.4.30
 Jinja2==3.1.6
 jiter==0.10.0
 joblib==1.5.1
