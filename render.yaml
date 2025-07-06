@@ -2,7 +2,9 @@ services:
   - type: web
     name: artgenie
     env: python
+    region: oregon
     plan: free
+    branch: main
     buildCommand: pip install -r requirements.txt
-    startCommand: python app.py  # ⬅️ Replace this if your entry point is different
-    pythonVersion: 3.10.12
+    startCommand: python app.py
+    pythonVersion: 3.10   # ✅ Set compatible Python version
